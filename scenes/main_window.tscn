@@ -1,0 +1,201 @@
+[gd_scene load_steps=6 format=3 uid="uid://lrrwy4ekafr5"]
+
+[ext_resource type="StyleBox" uid="uid://o70rvgpm7cbs" path="res://ui_theme/panel.tres" id="1_cc5xd"]
+[ext_resource type="PackedScene" uid="uid://hn3guh44rqp" path="res://scenes/primary_stats_container.tscn" id="1_dcerl"]
+[ext_resource type="Script" path="res://scenes/main_window.gd" id="2_dkl8t"]
+[ext_resource type="LabelSettings" uid="uid://d26dhekbasth0" path="res://ui_theme/font_settings/default_color.tres" id="4_bkf2y"]
+
+[sub_resource type="Theme" id="Theme_pphx2"]
+HBoxContainer/constants/separation = 2
+PanelContainer/styles/panel = ExtResource("1_cc5xd")
+VBoxContainer/constants/separation = 2
+
+[node name="MainWindow" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_pphx2")
+script = ExtResource("2_dkl8t")
+
+[node name="BackGroundColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.235294, 0.235294, 0.235294, 1)
+
+[node name="PanelContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="PrimaryStatsList" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="StrengthStatContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/PrimaryStatsList" instance=ExtResource("1_dcerl")]
+layout_mode = 2
+stat_name = "Strength"
+
+[node name="DexterityStatContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/PrimaryStatsList" instance=ExtResource("1_dcerl")]
+layout_mode = 2
+stat_name = "Dexterity"
+
+[node name="ConstitutionStatContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/PrimaryStatsList" instance=ExtResource("1_dcerl")]
+layout_mode = 2
+stat_name = "Constitution"
+
+[node name="IntelligenceStatContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/PrimaryStatsList" instance=ExtResource("1_dcerl")]
+layout_mode = 2
+stat_name = "Intelligence"
+
+[node name="WisdomStatContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/PrimaryStatsList" instance=ExtResource("1_dcerl")]
+layout_mode = 2
+stat_name = "Wisdom"
+
+[node name="CharismaStatContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/PrimaryStatsList" instance=ExtResource("1_dcerl")]
+layout_mode = 2
+stat_name = "Charisma"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/PrimaryStatsList"]
+custom_minimum_size = Vector2(0, 34)
+layout_mode = 2
+
+[node name="AbilityCheckPanel" type="PanelContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/PrimaryStatsList/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="AbilityLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/PrimaryStatsList/HBoxContainer/AbilityCheckPanel"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "None"
+label_settings = ExtResource("4_bkf2y")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AbilityCheckValuePanel" type="PanelContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/PrimaryStatsList/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CheckValueLabel" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/PrimaryStatsList/HBoxContainer/AbilityCheckValuePanel"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SkillsList" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/SkillsList"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/SkillsList/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/SkillsList/HBoxContainer/PanelContainer"]
+layout_mode = 2
+text = "Acrobatics (Dex)"
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/SkillsList/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/SkillsList/HBoxContainer/PanelContainer2"]
+layout_mode = 2
+text = "+3"
+
+[node name="PanelContainer3" type="PanelContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/SkillsList/HBoxContainer"]
+layout_mode = 2
+
+[node name="CheckBox" type="CheckBox" parent="PanelContainer/VBoxContainer/HBoxContainer/SkillsList/HBoxContainer/PanelContainer3"]
+layout_mode = 2
+text = "Proficient"
+
+[node name="Button" type="Button" parent="PanelContainer/VBoxContainer/HBoxContainer/SkillsList/HBoxContainer"]
+layout_mode = 2
+text = "Check"
+
+[node name="ProficienciesAndLanguages" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/ProficienciesAndLanguages"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/ProficienciesAndLanguages/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/ProficienciesAndLanguages/PanelContainer/VBoxContainer"]
+layout_mode = 2
+text = "Weapons"
+
+[node name="TextEdit" type="TextEdit" parent="PanelContainer/VBoxContainer/HBoxContainer/ProficienciesAndLanguages/PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+scroll_smooth = true
+
+[node name="PanelContainer2" type="PanelContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/ProficienciesAndLanguages"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/ProficienciesAndLanguages/PanelContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/ProficienciesAndLanguages/PanelContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Armors"
+
+[node name="TextEdit" type="TextEdit" parent="PanelContainer/VBoxContainer/HBoxContainer/ProficienciesAndLanguages/PanelContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+scroll_smooth = true
+
+[node name="PanelContainer3" type="PanelContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/ProficienciesAndLanguages"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/ProficienciesAndLanguages/PanelContainer3"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/ProficienciesAndLanguages/PanelContainer3/VBoxContainer"]
+layout_mode = 2
+text = "Tools"
+
+[node name="TextEdit" type="TextEdit" parent="PanelContainer/VBoxContainer/HBoxContainer/ProficienciesAndLanguages/PanelContainer3/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+scroll_smooth = true
+
+[node name="PanelContainer4" type="PanelContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/ProficienciesAndLanguages"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/VBoxContainer/HBoxContainer/ProficienciesAndLanguages/PanelContainer4"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/VBoxContainer/HBoxContainer/ProficienciesAndLanguages/PanelContainer4/VBoxContainer"]
+layout_mode = 2
+text = "Languages"
+
+[node name="TextEdit" type="TextEdit" parent="PanelContainer/VBoxContainer/HBoxContainer/ProficienciesAndLanguages/PanelContainer4/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+scroll_smooth = true
